@@ -1,0 +1,39 @@
+<html>
+<head>
+  <style>
+    iframe {
+        display: none;
+        width: 100%;
+        height: 125px;
+    }
+
+    #title1, #title2 {
+        background-color: #ccc;
+        padding: 10px;
+        width: 100%;
+        height: 125px;
+    }
+  </style>
+</head>
+<body>
+    <div id="set1">
+        <iframe src="http://example.com" id="iframe1"></iframe>
+        <div id="title1">Click to reveal iframe 1</div>
+    </div>
+    <div id="set2">
+        <iframe src="http://example.com" id="iframe2"></iframe>
+        <div id="title2">Click to reveal iframe 2</div>
+    </div>
+    <script>
+    document.getElementById("title1").addEventListener("click", function() {
+        document.getElementById("iframe1").style.display = "block";
+        document.getElementById("title1").style.display = "none";
+    });
+
+    document.getElementById("title2").addEventListener("click", function() {
+        document.getElementById("iframe2").style.display = "block";
+        document.getElementById("title2").style.display = "none";
+    });
+    </script>
+</body>
+</html>
