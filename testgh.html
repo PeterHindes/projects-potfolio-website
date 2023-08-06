@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    async function getReadmeFiles(username) {
+        const url = `https://api.github.com/users/${username}/repos`;
+        const response = await fetch(url);
+        const repos = await response.json();
+        const readmeContents = [];
+        for (const repo of repos) {
+            if (!repo.fork) {
+                const readmeUrl = `https://api.github.com/repos/${username}/${repo.name}/contents/README.md`;
+                const readmeResponse = await fetch(readmeUrl);
+                if (readmeResponse.status === 200) {
+                    const readmeContent = await readmeResponse.json();
+                    const content = atob(readmeContent.content);
+                    readmeContents.push(content);
+                }
+            }
+        }
+        return readmeContents;
+    }
+    getReadmeFiles("PeterHindes").then((r)=>{
+        console.log(r)
+    })
+    </script>
+</body>
+</html>

@@ -1,9 +1,0 @@
-{
-  "dependencies": {
-    "express": "^4.18.2",
-    "markd": "^1.2.0"
-  },
-  "scripts": {
-    "start": "node index.js"
-  }
-}
